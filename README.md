@@ -54,7 +54,7 @@ service:
 
 ~~~
 ~~~
-helm install grafana grafana/Grafana --values grafana
+helm install grafana grafana/Grafana --values grafana.yml
 ~~~
 ~~~
 kubectl get all
