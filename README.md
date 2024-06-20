@@ -1,4 +1,4 @@
-# Prometheus_grafana_kubernetes_persistent_volume
+# Prometheus_grafana_kubernetes_EFS_persistent_volume
 
 ### Helm Installation ######
 ~~~
@@ -22,10 +22,12 @@ vi prometheus.yml
 server:
   persistentVolume:
     enabled: true
+    existingClaim: "<create_and_mention_existing_pvc>"
   service:
     type: NodePort
 alertmanager:
   enabled: false
+
 
 ~~~
 ~~~
