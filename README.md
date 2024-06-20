@@ -1,5 +1,8 @@
 # Prometheus_grafana_kubernetes_EFS_persistent_volume
 
+ref --> https://github.com/baskarvj/persistent_volume_kubernetes for persistent volume creation
+
+Note: need to create seperate pvc for both prometheus and garfana, it will use the same efs and it creates different access points
 ### Helm Installation ######
 ~~~
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -41,6 +44,9 @@ security group -- all tcp
 
 
 ### Grafana Installation #######
+
+Note: need to create seperate pvc for both prometheus and garfana, it will use the same efs and it creates different access points
+
 ~~~
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
@@ -51,6 +57,12 @@ vi grafana.yml
 ~~~
 service:
   type: NodePort
+persistence:
+  type: pvc
+  enabled: true
+  existingClaim: efs-claim
+initChownData:
+  enabled: false
 
 ~~~
 ~~~
