@@ -98,7 +98,7 @@ service:
 persistence:
   type: pvc
   enabled: true
-  existingClaim: efs-claim-grafana
+  existingClaim: "<create_and_mention_existing_pvc>"
   accessModes:
     - ReadWriteMany
   size: 10Gi
