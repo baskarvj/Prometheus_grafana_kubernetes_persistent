@@ -52,7 +52,7 @@ helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 ~~~
 
-### for EBS volume
+### for EBS volume  Note: in efs grafana not works
 ~~~
 vi grafana.yml
 ~~~
