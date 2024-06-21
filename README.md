@@ -52,7 +52,7 @@ helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 ~~~
 
-### for EBS volume  Note: in efs grafana not works
+### for EBS volume
 ~~~
 vi grafana.yml
 ~~~
@@ -76,6 +76,36 @@ adminUser: admin
 adminPassword: Baskey@246
 
 
+~~~
+
+### for EFS volume   Note: will get database is locked error but it will work
+~~~
+vi grafana.yml
+~~~
+~~~
+service:
+  type: NodePort
+persistence:
+  type: pvc
+  enabled: true
+  existingClaim: efs-claim-grafana
+  accessModes:
+    - ReadWriteMany
+  size: 10Gi
+
+initChownData:
+  enabled: false
+
+    #grafana.ini:
+    #database:
+    # wal: true
+
+plugins:
+- alexanderzobnin-zabbix-app
+- grafana-clock-panel
+
+adminUser: admin
+adminPassword: Baskey@246
 ~~~
 ~~~
 helm install grafana grafana/grafana --values grafana.yml
