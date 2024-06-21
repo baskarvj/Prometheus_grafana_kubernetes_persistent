@@ -83,7 +83,7 @@ datasources:
      isDefault: true
 
 adminUser: admin
-adminPassword: Baskey@246
+adminPassword: <Enter_your_password_here>
 
 
 ~~~
@@ -125,7 +125,7 @@ datasources:
      isDefault: true
 
 adminUser: admin
-adminPassword: Baskey@246
+adminPassword: <Enter_your_password_here>
 ~~~
 ~~~
 helm install grafana grafana/grafana --values grafana.yml
