@@ -72,6 +72,16 @@ plugins:
 - alexanderzobnin-zabbix-app
 - grafana-clock-panel
 
+datasources:
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Prometheus
+     type: prometheus
+     url: http://prometheus-server
+     access: proxy
+     isDefault: true
+
 adminUser: admin
 adminPassword: Baskey@246
 
@@ -103,6 +113,16 @@ initChownData:
 plugins:
 - alexanderzobnin-zabbix-app
 - grafana-clock-panel
+
+datasources:
+ datasources.yaml:
+   apiVersion: 1
+   datasources:
+   - name: Prometheus
+     type: prometheus
+     url: http://prometheus-server
+     access: proxy
+     isDefault: true
 
 adminUser: admin
 adminPassword: Baskey@246
