@@ -51,6 +51,8 @@ Note: need to create seperate pvc for both prometheus and garfana, it will use t
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 ~~~
+
+### for EBS volume
 ~~~
 vi grafana.yml
 ~~~
@@ -60,9 +62,19 @@ service:
 persistence:
   type: pvc
   enabled: true
-  existingClaim: efs-claim
-initChownData:
-  enabled: false
+  storageClassName: ebs-sc
+    #  existingClaim: efs-claim
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+plugins:
+- alexanderzobnin-zabbix-app
+- grafana-clock-panel
+
+adminUser: admin
+adminPassword: Baskey@246
+
 
 ~~~
 ~~~
